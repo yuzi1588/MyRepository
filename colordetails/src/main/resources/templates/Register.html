@@ -1,0 +1,63 @@
+<!doctype html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+
+<head>
+    <title>Home</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="keywords" content=""/>
+    <script type="application/x-javascript"> addEventListener("load", function () {
+        setTimeout(hideURLbar, 0);
+    }, false);
+
+    function hideURLbar() {
+        window.scrollTo(0, 1);
+    } </script>
+    <!-- font files  -->
+    <link href='https://fonts.googleapis.com/css?family=Muli:400,300' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Nunito:400,300,700' rel='stylesheet' type='text/css'>
+    <!-- /font files  -->
+    <!-- css files -->
+    <link href="css/style.css" rel='stylesheet' type='text/css' media="all"/>
+    <link href="assets/css/bootstrap.css" rel="stylesheet"/>
+    <!-- /css files -->
+</head>
+
+<body>
+<h1>填写以下信息进行注册</h1>
+<div class="log">
+
+    <div class="content2">
+        <div>
+            <span>已经有账户？</span><a class="btn btn-success btn-lg" th:href="@{/login}">登录</a>
+        </div>
+        <h2>注册用户</h2>
+        <h3><strong th:unless="${#strings.isEmpty(msgError)}" th:text="${msgError}"></strong></h3>
+        <form th:action="@{/register}" method="post">
+            <input type="text" name="User_Name" value="登录名" onfocus="this.value = '';"
+                   onblur="if (this.value == '') {this.value = 'NAME AND SURNAME';}">
+            <input type="password" name="Password" value="PASSWORD" onfocus="this.value = '';"
+                   onblur="if (this.value == '') {this.value = '';}">
+            <div class="button-row">
+                <label class="radio-inline" for="seller">
+                    <input type="radio" name="userType" id="seller" value="1">借卖方</label>
+                <label class="radio-inline">
+                    <input type="radio" name="userType" id="brand" value="2">品牌商</label>
+                <h3>注册后请及时完善信息</h3>
+            </div>
+            <input type="submit" class="register" value="点击注册">
+        </form>
+    </div>
+    <div class="clear"></div>
+</div>
+<div class="footer">
+    <footer>
+        <p>
+            Copyright &copy; 2018.ColorDetails All rights reserved.
+        </p>
+    </footer>
+</div>
+
+</body>
+
+</html>

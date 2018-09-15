@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>用户信息</title>
+    <!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+        crossorigin="anonymous">
+
+    <!-- 可选的 Bootstrap 主题文件（一般不用引入） -->
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp"
+        crossorigin="anonymous">
+
+    <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+    <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+        crossorigin="anonymous"></script>
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="container col-xs-12 col-sm-12 col-md-12 col-lg-12">
+        <div class="row">
+            <div class="panel panel-primary col-sm-12 col-xs-12  col-md-12 col-lg-12">
+                <div class="panel-heading">
+                    <h1 align="center">
+                        用户信息啊
+                    </h1>
+                    <h3>
+                        <span class="glyphicon glyphicon-user"></span>
+                        <a href="/add" style="color: black">注册</a>
+                    </h3>
+                    <!-- <a href="/add">登录</a> -->
+                </div>
+                <div class="panel-body">
+                    <!-- <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12"> -->
+                    <table class="table table-hover table-bordered">
+                        <thead>
+                            <tr>
+                                <th>姓名</th>
+                                <th>密码</th>
+                                <th>性别</th>
+                                <th>爱好</th>
+                                <th>学历</th>
+                                <th>联系方式</th>
+                                <th>出生日期</th>
+                                <th>Email</th>
+                                <th>喜欢的颜色</th>
+                                <th>喜欢的数字</th>
+                                <th>家庭住址</th>
+                                <th>自我简介</th>
+                                <th>操作</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr th:each="Student:${list}">
+                                <td th:text="${Student.StuName}"></td>
+                                <td th:text="${Student.Password}"></td>
+                                <td th:text="${Student.Sex}"></td>
+                                <td th:text="${Student.Hoby}"></td>
+                                <td>
+                                    <div th:switch="${Student.Xueli}">
+                                        <p th:case="1001">小学</p>
+                                        <p th:case="1002">初中</p>
+                                        <p th:case="1003">高中</p>
+                                        <p th:case="1004">大学</p>
+                                        <p th:case="1005">研究生</p>
+                                    </div>
+                                </td>
+                                <td th:text="${Student.StuPhone}"></td>
+                                <td th:text="${Student.Birthday}"></td>
+                                <td th:text="${Student.Email}"></td>
+                                <td>
+                                    <div th:style="'width:100%;height:100%;background-color:' + ${Student.Color} ">&nbsp;</div>
+                                </td>
+                                <td th:text="${Student.Number}"></td>
+                                <td th:text="${Student.StrAddress}"></td>
+                                <td th:text="${Student.Aboutme}"></td>
+                                <td>
+                                    <a th:href="@{'update/'+${Student.StuID}}">修改</a>|
+                                    <a th:href="@{'delete/'+${Student.StuID}}">删除</a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <!-- </div> -->
+
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+
+        </div>
+        <nav aria-label="Page navigation" align="center">
+            <ul class="pagination">
+                <li>
+                    <a href="#" aria-label="Previous">
+                        <span aria-hidden="true">&laquo;</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">1</a>
+                </li>
+                <li>
+                    <a href="#">2</a>
+                </li>
+                <li>
+                    <a href="#">3</a>
+                </li>
+                <li>
+                    <a href="#">4</a>
+                </li>
+                <li>
+                    <a href="#">5</a>
+                </li>
+                <li>
+                    <a href="#" aria-label="Next">
+                        <span aria-hidden="true">&raquo;</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+
+
+    </div>
+
+</body>
+
+</html>

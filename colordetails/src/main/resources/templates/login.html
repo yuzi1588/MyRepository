@@ -1,0 +1,58 @@
+<!doctype html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+
+<head>
+    <title>Home</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="keywords" content=""/>
+    <script type="application/x-javascript"> addEventListener("load", function () {
+        setTimeout(hideURLbar, 0);
+    }, false);
+
+    function hideURLbar() {
+        window.scrollTo(0, 1);
+    } </script>
+    <!-- font files  -->
+    <link href='https://fonts.googleapis.com/css?family=Muli:400,300' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Nunito:400,300,700' rel='stylesheet' type='text/css'>
+    <!-- /font files  -->
+    <!-- css files -->
+    <link href="css/style.css" rel='stylesheet' type='text/css' media="all"/>
+    <link href="assets/css/bootstrap.css" rel="stylesheet"/>
+    <!-- /css files -->
+</head>
+
+<body>
+<h1><nobr></nobr></h1>
+<div class="log">
+    <div class="content1">
+        <h2>ColorDetails借卖平台</h2>
+        <form method="post" action="/login">
+            <input type="text" name="username">
+            <input type="password" name="password">
+            <div class="button-row">
+                <input type="submit" class="sign-in" value="登录" placeholder="用户名">
+                <input type="reset" class="reset" value="重置" placeholder="密码">
+                <div class="clear"></div>
+            </div>
+            <div><strong th:unless="${#strings.isEmpty(msgError)}" th:text="${msgError}"></strong></div>
+        </form>
+        <div style="width: 50px;height: 50px;" class="container">
+            <a class="btn btn-primary btn-lg" th:href="@{/register}">注册</a>
+        </div>
+    </div>
+
+    <div class="clear"></div>
+</div>
+<div class="footer">
+    <footer>
+        <p>
+            Copyright &copy; 2018.ColorDetails All rights reserved.
+        </p>
+    </footer>
+</div>
+
+</body>
+
+</html>

@@ -1,0 +1,140 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>添加网店</title>
+    <!-- Bootstrap Styles-->
+    <link href="../assets/css/bootstrap.css" rel="stylesheet" />
+    <!-- FontAwesome Styles-->
+    <link href="../assets/css/font-awesome.css" rel="stylesheet" />
+    <!-- Morris Chart Styles-->
+    <link href="../assets/js/morris/morris-0.4.3.min.css" rel="stylesheet" />
+    <!-- Custom Styles-->
+    <link href="../assets/css/custom-styles.css" rel="stylesheet" />
+    <!-- Google Fonts-->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="../assets/js/Lightweight-Chart/cssCharts.css">
+</head>
+
+<body>
+    <div id="wrapper">
+        <!-- 头部 -->
+        <nav class="navbar navbar-default top-navbar" role="navigation" th:replace="menu::MyTopMenu">
+        </nav>
+        <!--/. NAV TOP  -->
+        <!-- 菜单栏 -->
+        <nav class="navbar-default navbar-side" role="navigation" th:replace="menu::MySideMenu">
+        </nav>
+        <!-- /. NAV SIDE  -->
+
+        <div id="page-wrapper">
+            <div class="header">
+                <h1 class="page-header">
+                    网店
+                </h1>
+                <ol class="breadcrumb">
+                    <li><a th:href="@{/goSellerindex}">主页</a></li>
+                    <li><a th:href="@{'/findStoreByUserId/'+${session.user.getId()}}">网店管理</a></li>
+                    <li class="active">网店添加</li>
+                </ol>
+            </div>
+            <div class="col-lg-8 text-center">
+                <form action="/addStore" method="post" enctype="multipart/form-data" class="form-horizontal">
+                    <input type="hidden" name="sellerInfo.Id"  th:value="${list.Id}">
+                    <table class="table table-striped table-bordered table-hover" id="dataTables-example">
+                        <tr>
+                            <th width="40%">网店名称</th>
+                            <td width="60%">
+                                <input  name="Name" type="text">
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>网店简介</th>
+                            <td>
+                                <textarea id="Brief_Info" name="Brief_Info" cols="20" rows="10"></textarea>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>网店LOGO</th>
+                            <td><input type="file" id="file1" name="file" onchange="loadFile()"></td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">
+                                <input type="submit" value="提交" class="btn btn-primary btn-lg">
+                            </td>
+                        </tr>
+                    </table>
+                </form>
+            </div>
+            <div class="col-lg-4">
+                <img id="imgshow" width="260px" height="260px">
+            </div>
+            <div id="page-inner ">
+
+                <footer class="col-lg-12">
+                    <p>Copyright &copy; 2018.ColorDetails All rights reserved.</p>
+                </footer>
+            </div>
+            <!-- /. PAGE INNER  -->
+        </div>
+        <!-- /. PAGE WRAPPER  -->
+    </div>
+    <!-- /. WRAPPER  -->
+
+    <!-- JS Scripts-->
+    <!-- jQuery Js -->
+    <script src="../assets/js/jquery-1.10.2.js"></script>
+    <!-- Bootstrap Js -->
+    <script src="../assets/js/bootstrap.min.js"></script>
+
+    <!-- Metis Menu Js -->
+    <script src="../assets/js/jquery.metisMenu.js"></script>
+    <!-- Morris Chart Js -->
+    <script src="../assets/js/morris/raphael-2.1.0.min.js"></script>
+    <script src="../assets/js/morris/morris.js"></script>
+
+
+    <script src="../assets/js/easypiechart.js"></script>
+    <script src="../assets/js/easypiechart-data.js"></script>
+
+    <script src="../assets/js/Lightweight-Chart/jquery.chart.js"></script>
+
+    <!-- Custom Js -->
+    <script src="../assets/js/custom-scripts.js"></script>
+
+
+    <script>
+        function loadFile() {
+            try {
+                //获取上传的文件
+                var file = document.getElementById('file1').files[0];
+                var type = file.type;
+                type = type.substring(0, type.indexOf('/'));
+                if (type != 'image') {
+                    Common.error("请选择一个jpg|gif|png 格式图片");
+                    return;
+                }
+                // var size = file.size;
+                // if (size > (100 * 1024)) {
+                //     alert("图片大小不能超过100Kb");
+                //     return;
+                // }
+                var reader = new FileReader()
+                reader.onload = function (e) {
+                    var result = e.target.result;
+                    //将图片显示到<img>中
+                    $("#imgshow").attr("src", result);
+                }
+                reader.readAsDataURL(file);
+            } catch (e) {
+                console.log(e)
+            }
+        }
+    </script>
+
+
+</body>
+
+</html>

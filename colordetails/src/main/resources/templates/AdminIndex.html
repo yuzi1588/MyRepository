@@ -1,0 +1,88 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>cssmoban</title>
+    <!-- Bootstrap Styles-->
+    <link href="assets/css/bootstrap.css" rel="stylesheet" />
+    <!-- FontAwesome Styles-->
+    <link href="assets/css/font-awesome.css" rel="stylesheet" />
+    <!-- Morris Chart Styles-->
+
+    <!-- Custom Styles-->
+    <link href="assets/css/custom-styles.css" rel="stylesheet" />
+    <!-- Google Fonts-->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet" type="text/css" />
+    <!-- TABLE STYLES-->
+    <link href="assets/js/dataTables/dataTables.bootstrap.css" rel="stylesheet" />
+</head>
+<body>
+    <div id="wrapper">
+        <!-- 头部 -->
+        <nav class="navbar navbar-default top-navbar" role="navigation" th:replace="menu::MyTopMenu">
+        </nav>
+        <!--/. NAV TOP  -->
+        <!-- 菜单栏 -->
+        <nav class="navbar-default navbar-side" role="navigation" th:replace="menu::MySideMenu">
+        </nav>
+        <!-- /. NAV SIDE  -->
+        <div id="page-wrapper">
+            <div class="header">
+                <h1 class="page-header">
+                    我的主页
+                </h1>
+                <ol class="breadcrumb">
+                    <li>
+                        <a href="#">主页</a>
+                    </li>
+                    <li class="active">
+                        我的主页
+                    </li>
+                </ol>
+            </div>
+
+            <div id="page-inner">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h1 th:text="'欢迎你：'+${session.user.getUser_Name()}"></h1>
+                        <br>
+                        <h3>今日天气：</h3>
+                        <br>
+                        <br>
+                        <iframe width="650" height="450" src="https://embed.windy.com/embed2.html?lat=23.117&lon=113.250&zoom=5&level=surface&overlay=wind&menu=&message=&marker=true&calendar=&pressure=&type=map&location=coordinates&detail=&detailLat=23.117&detailLon=113.250&metricWind=default&metricTemp=default&radarRange=-1" frameborder="0"></iframe>
+                    </div>
+                </div>
+
+            </div>
+            <footer>
+                <p>
+                    Copyright &copy; 2018.ColorDetails All rights reserved.
+                </p>
+            </footer>
+        </div>
+        <!-- /. PAGE INNER  -->
+    </div>
+    <!-- /. PAGE WRAPPER  -->
+    <!-- /. WRAPPER  -->
+    <!-- JS Scripts-->
+    <!-- jQuery Js -->
+    <script src="assets/js/jquery-1.10.2.js"></script>
+    <!-- Bootstrap Js -->
+    <script src="assets/js/bootstrap.min.js"></script>
+    <!-- Metis Menu Js -->
+    <script src="assets/js/jquery.metisMenu.js"></script>
+    <!-- DATA TABLE SCRIPTS -->
+    <script src="assets/js/dataTables/jquery.dataTables.js"></script>
+    <script src="assets/js/dataTables/dataTables.bootstrap.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("#dataTables-example").dataTable();
+        });
+    </script>
+    <!-- Custom Js -->
+    <script src="assets/js/custom-scripts.js"></script>
+</body>
+
+</html>

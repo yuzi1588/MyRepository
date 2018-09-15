@@ -1,0 +1,173 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>品牌商商品信息</title>
+    <!-- Bootstrap Styles-->
+    <link href="../assets/css/bootstrap.css" rel="stylesheet"/>
+    <!-- FontAwesome Styles-->
+    <link href="../assets/css/font-awesome.css" rel="stylesheet"/>
+    <!-- Morris Chart Styles-->
+
+    <!-- Custom Styles-->
+    <link href="../assets/css/custom-styles.css" rel="stylesheet"/>
+    <!-- Google Fonts-->
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'/>
+    <!-- TABLE STYLES-->
+    <link href="../assets/js/dataTables/dataTables.bootstrap.css" rel="stylesheet"/>
+</head>
+
+<body>
+<div id="wrapper">
+    <!-- 头部 -->
+    <nav class="navbar navbar-default top-navbar" role="navigation" th:replace="menu::MyTopMenu">
+    </nav>
+    <!--/. NAV TOP  -->
+    <!-- 菜单栏 -->
+    <nav class="navbar-default navbar-side" role="navigation" th:replace="menu::MySideMenu">
+    </nav>
+    <!-- /. NAV SIDE  -->
+    <div id="page-wrapper">
+        <div class="header">
+            <h1 class="page-header">
+                商品管理
+            </h1>
+            <ol class="breadcrumb">
+                <li><a th:href="@{/goBrandIndex}">主页</a></li>
+                <li class="active">商品管理</li>
+            </ol>
+
+        </div>
+
+        <div id="page-inner">
+
+            <div class="row">
+                <div class="col-md-12">
+                    <!-- Advanced Tables -->
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            商品列表&nbsp;&nbsp;<a class="btn btn-primary"
+                                               th:href="@{'/addCommodityPage/'+${session.user.getId()}}">新增商品</a>
+                        </div>
+                        <div class="panel-body">
+                            <div class="table-responsive">
+                                <table class="table table-striped table-bordered table-hover" id="dataTables-example">
+                                    <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>商品名</th>
+                                        <th>商品描述</th>
+                                        <th>单价(元)</th>
+                                        <th>库存数量(个)</th>
+                                        <th>生产日期</th>
+                                        <th>保质期（天）</th>
+                                        <th>商品LOGO</th>
+                                        <th>单品容量（ml）</th>
+                                        <th>包装件数（瓶）</th>
+                                        <th>类型</th>
+                                        <th>状态</th>
+                                        <th>操作</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody th:each="commodity:${list}">
+                                    <tr>
+                                        <td th:text="${commodity.Id}"></td>
+                                        <td th:text="${commodity.Name}"></td>
+                                        <td>
+                                            <a tabindex="0" class="btn btn-info" role="button" data-toggle="popover"
+                                               data-placement="bottom" data-trigger="focus"
+                                               th:data-content="${commodity.Details}">详细说明
+                                            </a>
+                                        </td>
+                                        <td th:text="${commodity.Price}"></td>
+                                        <td th:text="${commodity.Number}"></td>
+                                        <td th:text="${commodity.Product_Time}"></td>
+                                        <td th:text="${commodity.Quality_Time}"></td>
+                                        <td><img th:src="'http://localhost:8080/images/upload/'+${commodity.getImage()}"
+                                                 width="100px" height="100px"></td>
+                                        <td th:text="${commodity.capacityTypeInfo.Ml}"></td>
+                                        <td th:text="${commodity.packagesTypeInfo.Number}"></td>
+                                        <td th:text="${commodity.waterTypeInfo.Name}"></td>
+                                        <td th:switch="${commodity.State}">
+                                            <span th:case="${0}" class="label label-warning">已下架</span>
+                                            <span th:case="${1}"  class="label label-success">已上架</span>
+                                        </td>
+                                        <td>
+                                            <a class="btn btn-primary"
+                                               th:href="@{'/modifyPage/'+${commodity.Id}}">修改</a>&nbsp;
+                                            <a class="btn btn-danger"
+                                               th:href="@{'/deleteByCommodityId/'+${commodity.Id}}">删除</a>&nbsp;
+                                               
+                                            <p>
+                                                <a class="btn btn-primary"
+                                                   th:href="@{'/upCommodityById/'+${commodity.Id}+'/'+${session.user.getId()}}">上架</a>&nbsp;&nbsp;
+                                                <a class="btn btn-danger"
+                                                   th:href="@{'/downCommodityById/'+${commodity.Id}+'/'+${session.user.getId()}}">下架</a>
+                                            </p>
+                                        </td>
+
+
+                                    </tr>
+
+                                    </tbody>
+                                </table>
+                            </div>
+
+                        </div>
+                    </div>
+                    <!--End Advanced Tables -->
+                </div>
+            </div>
+            <!-- /. ROW  -->
+
+            <!-- /. ROW  -->
+            <div class="row">
+                <div class="col-md-6">
+                    <!--    Striped Rows Table  -->
+                    <!--  End  Striped Rows Table  -->
+                </div>
+                <div class="col-md-6">
+                    <!--    Bordered Table  -->
+                    <!--  End  Bordered Table  -->
+                </div>
+            </div>
+            <!-- /. ROW  -->
+            <!-- /. ROW  -->
+        </div>
+        <footer>
+            <p>
+                Copyright &copy; 2018.ColorDetails All rights reserved.
+            </p>
+        </footer>
+    </div>
+    <!-- /. PAGE INNER  -->
+</div>
+<!-- /. PAGE WRAPPER  -->
+<!-- /. WRAPPER  -->
+<!-- JS Scripts-->
+<!-- jQuery Js -->
+<script src="../assets/js/jquery-1.10.2.js"></script>
+<!-- Bootstrap Js -->
+<script src="../assets/js/bootstrap.min.js"></script>
+<!-- Metis Menu Js -->
+<script src="../assets/js/jquery.metisMenu.js"></script>
+<!-- DATA TABLE SCRIPTS -->
+<script src="../assets/js/dataTables/jquery.dataTables.js"></script>
+<script src="../assets/js/dataTables/dataTables.bootstrap.js"></script>
+<script>
+    $(document).ready(function () {
+        $('#dataTables-example').dataTable();
+    });
+    $(function () {
+        $("[data-toggle='popover']").popover();
+    });
+</script>
+<!-- Custom Js -->
+<script src="../assets/js/custom-scripts.js"></script>
+
+
+</body>
+
+</html>

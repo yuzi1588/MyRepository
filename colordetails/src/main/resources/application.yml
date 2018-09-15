@@ -1,0 +1,25 @@
+spring:
+  datasource:
+      driver-class-name: com.mysql.jdbc.Driver
+      url: jdbc:mysql://localhost:3306/colordetails?useUnicode=true&characterEncoding=UTF-8&useSSL=false
+      username: root
+      password: 1234
+
+  jpa:
+      database: mysql
+      show-sql: true
+      hibernate:
+        ddl-auto: update
+  mvc:
+      date-format: yyyy-MM-dd
+#  #关闭注释，及时刷新
+#  thymeleaf:
+#    cache: true
+#  devtools:
+#    restart:
+##      热部署生效
+#      enabled: true
+##      设置重启的目录,添加那个目录断网恩建需要restart
+#      additional-path: src/main
+##      排除那个目录的文件不需要restart
+#      exclue: static/**

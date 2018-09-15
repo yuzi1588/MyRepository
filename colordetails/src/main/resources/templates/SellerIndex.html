@@ -1,0 +1,168 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>cssmoban</title>
+    <!-- Bootstrap Styles-->
+    <link href="assets/css/bootstrap.css" rel="stylesheet" />
+    <!-- FontAwesome Styles-->
+    <link href="assets/css/font-awesome.css" rel="stylesheet" />
+    <!-- Morris Chart Styles-->
+    <link href="assets/js/morris/morris-0.4.3.min.css" rel="stylesheet" />
+    <!-- Custom Styles-->
+    <link href="assets/css/custom-styles.css" rel="stylesheet" />
+    <!-- Google Fonts-->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="assets/js/Lightweight-Chart/cssCharts.css">
+</head>
+
+<body>
+    <div id="wrapper">
+        <!-- 头部 -->
+        <nav class="navbar navbar-default top-navbar" role="navigation" th:replace="menu::MyTopMenu">
+        </nav>
+        <!--/. NAV TOP  -->
+        <!-- 菜单栏 -->
+        <nav class="navbar-default navbar-side" role="navigation" th:replace="menu::MySideMenu">
+        </nav>
+        <!-- /. NAV SIDE  -->
+        <div id="page-wrapper">
+            <div class="header">
+                <h1 class="page-header">
+                    欢迎您,睿智的借卖方：
+                    <strong th:text="${session.user.getUser_Name()}">用户名</strong>！
+                </h1>
+                <ol class="breadcrumb">
+                    <li>
+                        <a href="#">主页</a>
+                    </li>
+                    <li class="active">个人信息</li>
+                </ol>
+            </div>
+
+            <div id="page-inner">
+                <div class="row">
+                    <h3>行业新闻</h3>
+                    <br>
+                    <br>
+                    <br>
+                    <div class="col-md-4 col-sm-4">
+                        <div class="panel panel-primary">
+                            <div class="panel-heading">
+                                暑假不无聊，娃哈哈请你当一回小工人
+                            </div>
+                            <div class="panel-body">
+                                <p>“原来一瓶水是这样生产出来的”“这么长一条生产线只要这么几个人就能操控了啊”……近日，由浙江团省委主办的2018年“圆梦·浙江农村留守儿童”大型公益活动之一的“跟着课本游浙江”公益夏令营，来自衢州市...</p>
+                            </div>
+                            <div class="panel-footer">
+                                <a href="#">详细了解</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-sm-4">
+                        <div class="panel panel-primary">
+                            <div class="panel-heading">
+                                百岁山海外版，百岁山意大利工厂投产
+                            </div>
+                            <div class="panel-body">
+                                <p>在当下，随着中国企业的不断扩张升级，不满足于国内市场，而将视野瞄准海外的企业不在少数且日渐增长。其实对于中国企业来说，扩张海外并不是一种陌生的行为，陌生的是，如何扭转中国企业在海外以低端....</p>
+                            </div>
+                            <div class="panel-footer">
+                                <a href="#">详细了解</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-sm-4">
+                        <div class="panel panel-primary">
+                            <div class="panel-heading">
+                                华润怡宝践行社会责任，发起"水公益"平台
+                            </div>
+                            <div class="panel-body">
+                                <p>2018年的“世界水日&中国水周”依然在平凡的生活中为大家共筑着美好，关于水的话题，今年最大的亮点当属华润怡宝协同政府部门、行业专家、公益组织及青年大学生等多方优秀公益力量共同发起的"水公益"平台...</p>
+                            </div>
+                            <div class="panel-footer">
+                                <a href="#">详细了解</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-sm-4">
+                            <div class="panel panel-primary">
+                                <div class="panel-heading">
+                                    暑假不无聊，娃哈哈请你当一回小工人
+                                </div>
+                                <div class="panel-body">
+                                    <p>“原来一瓶水是这样生产出来的”“这么长一条生产线只要这么几个人就能操控了啊”……近日，由浙江团省委主办的2018年“圆梦·浙江农村留守儿童”大型公益活动之一的“跟着课本游浙江”公益夏令营，来自衢州市...</p>
+                                </div>
+                                <div class="panel-footer">
+                                    <a href="#">详细了解</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 col-sm-4">
+                            <div class="panel panel-primary">
+                                <div class="panel-heading">
+                                    百岁山海外版，百岁山意大利工厂投产
+                                </div>
+                                <div class="panel-body">
+                                    <p>在当下，随着中国企业的不断扩张升级，不满足于国内市场，而将视野瞄准海外的企业不在少数且日渐增长。其实对于中国企业来说，扩张海外并不是一种陌生的行为，陌生的是，如何扭转中国企业在海外以低端....</p>
+                                </div>
+                                <div class="panel-footer">
+                                    <a href="#">详细了解</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 col-sm-4">
+                            <div class="panel panel-primary">
+                                <div class="panel-heading">
+                                    华润怡宝践行社会责任，发起"水公益"平台
+                                </div>
+                                <div class="panel-body">
+                                    <p>2018年的“世界水日&中国水周”依然在平凡的生活中为大家共筑着美好，关于水的话题，今年最大的亮点当属华润怡宝协同政府部门、行业专家、公益组织及青年大学生等多方优秀公益力量共同发起的"水公益"平台...</p>
+                                </div>
+                                <div class="panel-footer">
+                                    <a href="#">详细了解</a>
+                                </div>
+                            </div>
+                        </div>
+                </div>
+            </div>
+
+            <footer class="col-lg-12">
+                <p>
+                    Copyright &copy; 2018.ColorDetails All rights reserved
+                </p>
+            </footer>
+        </div>
+
+        <!-- /. PAGE INNER  -->
+    </div>
+    <!-- JS Scripts-->
+    <!-- jQuery Js -->
+    <script src="assets/js/jquery-1.10.2.js"></script>
+    <!-- Bootstrap Js -->
+    <script src="assets/js/bootstrap.min.js"></script>
+
+    <!-- Metis Menu Js -->
+    <script src="assets/js/jquery.metisMenu.js"></script>
+    <!-- Morris Chart Js -->
+    <script src="assets/js/morris/raphael-2.1.0.min.js"></script>
+    <script src="assets/js/morris/morris.js"></script>
+
+
+    <script src="assets/js/easypiechart.js"></script>
+    <script src="assets/js/easypiechart-data.js"></script>
+
+    <script src="assets/js/Lightweight-Chart/jquery.chart.js"></script>
+
+    <!-- Custom Js -->
+    <script src="assets/js/custom-scripts.js"></script>
+
+    <script>
+
+    </script>
+
+</body>
+
+</html>
